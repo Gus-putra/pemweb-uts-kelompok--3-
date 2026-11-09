@@ -1,0 +1,44 @@
+
+<%- include('../partials/header') %>
+
+<div class="content-card">
+    <h5 class="mb-3">Daftar Kendaraan Pelanggan</h5>
+
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Nomor Polisi</th>
+                    <th>Pemilik</th>
+                    <th>Merek</th>
+                    <th>Tipe</th>
+                    <th>Tahun</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <% if (kendaraan.length === 0) { %>
+                    <tr>
+                        <td colspan="6" class="text-center text-muted py-4">
+                            Data kendaraan kosong.
+                        </td>
+                    </tr>
+                <% } else { %>
+                    <% kendaraan.forEach((k, i) => { %>
+                        <tr>
+                            <td><%= i + 1 %></td>
+                            <td><strong><%= k.nomor_polisi %></strong></td>
+                            <td><%= k.nama_pelanggan %></td>
+                            <td><%= k.merek %></td>
+                            <td><%= k.tipe %></td>
+                            <td><%= k.tahun %></td>
+                        </tr>
+                    <% }) %>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<%- include('../partials/footer') %>

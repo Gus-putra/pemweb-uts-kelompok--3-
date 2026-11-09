@@ -1,0 +1,112 @@
+
+<%- include('../partials/header') %>
+
+<div class="content-card">
+    <h5 class="mb-4">Edit Transaksi Servis #<%= servis.id_servis %></h5>
+
+    <form action="/servis/edit/<%= servis.id_servis %>" method="POST">
+
+        <div class="mb-3">
+            <label class="form-label">Pelanggan</label>
+            <select
+                name="id_pelanggan"
+                id="id_pelanggan"
+                class="form-select"
+                required
+            >
+                <% pelanggan.forEach(p => { %>
+                    <option
+                        value="<%= p.id_pelanggan %>"
+                        <%= p.id_pelanggan === servis.id_pelanggan ? 'selected' : '' %>
+                    >
+                        <%= p.nama %>
+                    </option>
+                <% }) %>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Kendaraan</label>
+            <select
+                name="id_kendaraan"
+                id="id_kendaraan"
+                class="form-select"
+                required
+            >
+                <% kendaraan
+                    .filter(k => k.id_pelanggan === servis.id_pelanggan)
+                    .forEach(k => { %>
+                    <option
+                        value="<%= k.id_kendaraan %>"
+                        <%= k.id_kendaraan === servis.id_kendaraan ? 'selected' : '' %>
+                    >
+                        <%= k.nomor_polisi %> - <%= k.merek %> <%= k.tipe %>
+                    </option>
+                <% }) %>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Tanggal Servis</label>
+            <input
+                type="date"
+                name="tanggal_servis"
+                value="<%= new Date(servis.tanggal_servis).toISOString().slice(0, 10) %>"
+                class="form-control"
+                required
+            >
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Keluhan</label>
+            <textarea
+                name="keluhan"
+                class="form-control"
+                rows="3"
+                maxlength="500"
+            ><%= servis.keluhan || '' %></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Status</label>
+            <select name="status" class="form-select" required>
+                <option value="Menunggu" <%= servis.status === 'Menunggu' ? 'selected' : '' %>>
+                    Menunggu
+                </option>
+                <option value="Sedang Dikerjakan" <%= servis.status === 'Sedang Dikerjakan' ? 'selected' : '' %>>
+                    Sedang Dikerjakan
+                </option>
+                <option value="Selesai" <%= servis.status === 'Selesai' ? 'selected' : '' %>>
+                    Selesai
+                </option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Total Biaya (Rp)</label>
+            <input
+                type="number"
+                name="total_biaya"
+                class="form-control"
+                value="<%= Number(servis.total_biaya) %>"
+                min="0"
+                step="1"
+                required
+            >
+            <small class="text-muted">
+                Masukkan angka tanpa titik. Contoh: 175000
+            </small>
+        </div>
+
+        <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-orange">
+                <i class="bi bi-save"></i> Simpan Perubahan
+            </button>
+
+            <a href="/servis" class="btn btn-secondary">Batal</a>
+        </div>
+
+    </form>
+</div>
+
+<%- include('../partials/footer') %>

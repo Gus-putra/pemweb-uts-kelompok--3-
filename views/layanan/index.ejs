@@ -1,0 +1,42 @@
+
+<%- include('../partials/header') %>
+
+<div class="content-card">
+    <h5 class="mb-3">Daftar Layanan Bengkel</h5>
+
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Nama Layanan</th>
+                    <th>Deskripsi</th>
+                    <th>Harga</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <% if (layanan.length === 0) { %>
+                    <tr>
+                        <td colspan="4" class="text-center text-muted py-4">
+                            Data layanan kosong.
+                        </td>
+                    </tr>
+                <% } else { %>
+                    <% layanan.forEach((l, i) => { %>
+                        <tr>
+                            <td><%= i + 1 %></td>
+                            <td><%= l.nama_layanan %></td>
+                            <td><%= l.deskripsi %></td>
+                            <td>
+                                Rp <%= Number(l.harga).toLocaleString('id-ID') %>
+                            </td>
+                        </tr>
+                    <% }) %>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<%- include('../partials/footer') %>

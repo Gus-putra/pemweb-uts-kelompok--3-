@@ -1,0 +1,27 @@
+
+{
+  "name": "uts-project-bengkel",
+  "version": "1.0.0",
+  "description": "Aplikasi Manajemen Bengkel BengkelKu",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "keywords": [
+    "bengkel",
+    "manajemen-servis"
+  ],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "ejs": "^7.0.2",
+    "express": "^5.3.0",
+    "mysql2": "^3.24.6"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}

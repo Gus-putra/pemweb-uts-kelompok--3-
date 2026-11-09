@@ -1,0 +1,283 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+    color: #263238;
+}
+
+.app-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 250px;
+    background: #202b3c;
+    color: white;
+    padding: 25px 18px;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+
+.brand {
+    font-size: 23px;
+    font-weight: bold;
+    margin-bottom: 40px;
+    color: #ff9f43;
+}
+
+.brand i {
+    margin-right: 8px;
+}
+
+.menu-label {
+    font-size: 11px;
+    color: #9ca9bb;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+.sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.sidebar .nav-link {
+    color: #dce3ec;
+    padding: 12px 14px;
+    border-radius: 8px;
+    transition: 0.2s;
+}
+
+.sidebar .nav-link:hover {
+    background: #34445b;
+    color: #ffad5a;
+}
+
+.sidebar .nav-link i {
+    margin-right: 10px;
+}
+
+.sidebar-bottom {
+    margin-top: auto;
+    color: #9ca9bb;
+}
+
+.main-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.topbar {
+    background: white;
+    min-height: 75px;
+    padding: 15px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.admin-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.admin-info i {
+    font-size: 26px;
+    color: #ff9f43;
+}
+
+.page-content {
+    padding: 30px;
+}
+
+.welcome-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.welcome-section h3 {
+    font-weight: bold;
+}
+
+.welcome-section p {
+    color: #77818e;
+}
+
+.btn-orange {
+    background: #f79335;
+    color: white;
+    border: none;
+    padding: 10px 17px;
+    border-radius: 7px;
+}
+
+.btn-orange:hover {
+    background: #df7920;
+    color: white;
+}
+
+.stat-card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    height: 100%;
+}
+
+.stat-card p {
+    color: #7c8795;
+    margin: 15px 0 5px;
+    font-size: 13px;
+}
+
+.stat-card h3 {
+    font-weight: bold;
+}
+
+.stat-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    font-size: 21px;
+}
+
+.orange {
+    background: #fff0df;
+    color: #f79335;
+}
+
+.blue {
+    background: #e6f0ff;
+    color: #3678d8;
+}
+
+.green {
+    background: #e4f7ed;
+    color: #26975a;
+}
+
+.yellow {
+    background: #fff6d9;
+    color: #d9a21b;
+}
+
+.content-card {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    margin-bottom: 20px;
+}
+
+.content-card h5 {
+    font-weight: bold;
+}
+
+.table thead th {
+    background: #f7f8fa;
+    color: #5b6573;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.table td {
+    font-size: 13px;
+}
+
+.status-badge {
+    display: inline-block;
+    background: #fff2d9;
+    color: #a56b00;
+    border-radius: 20px;
+    padding: 5px 10px;
+    font-size: 11px;
+}
+
+.form-control,
+.form-select {
+    padding: 10px;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 75px;
+        padding: 20px 10px;
+    }
+
+    .brand {
+        font-size: 0;
+        text-align: center;
+    }
+
+    .brand i {
+        font-size: 25px;
+        margin: 0;
+    }
+
+    .menu-label,
+    .sidebar .nav-link {
+        font-size: 0;
+        text-align: center;
+    }
+
+    .sidebar .nav-link i {
+        font-size: 20px;
+        margin: 0;
+    }
+
+    .sidebar-bottom {
+        display: none;
+    }
+
+    .page-content {
+        padding: 15px;
+    }
+
+    .topbar {
+        padding: 15px;
+    }
+
+    .welcome-section {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+    .status-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+    .waiting {
+    background: #fff3cd;
+    color: #856404;
+}
+
+    .processing {
+    background: #cfe2ff;
+    color: #084298;
+}
+
+    .completed {
+    background: #d1e7dd;
+    color: #0f5132;
+}

@@ -1,0 +1,22 @@
+
+<%- include('../partials/header') %>
+
+<div class="content-card">
+    <h5 class="mb-4">Detail Pelanggan</h5>
+
+    <% if (pelanggan) { %>
+        <div class="mb-3">
+            <p><strong>ID Pelanggan:</strong> <%= pelanggan.id_pelanggan %></p>
+            <p><strong>Nama:</strong> <%= pelanggan.nama %></p>
+            <p><strong>Telepon:</strong> <%= pelanggan.no_telepon %></p>
+            <p><strong>Alamat:</strong> <%= pelanggan.alamat %></p>
+            <p><strong>Email:</strong> <%= pelanggan.email %></p>
+        </div>
+    <% } else { %>
+        <p class="text-muted">Data pelanggan tidak tersedia.</p>
+    <% } %>
+
+    <a href="/pelanggan" class="btn btn-secondary">Kembali</a>
+</div>
+
+<%- include('../partials/footer') %>

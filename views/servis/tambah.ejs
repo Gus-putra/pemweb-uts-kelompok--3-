@@ -1,0 +1,86 @@
+
+<%- include('../partials/header') %>
+
+<div class="content-card">
+    <h5 class="mb-4">Form Tambah Servis</h5>
+
+    <form action="/servis/tambah" method="POST">
+
+        <div class="mb-3">
+            <label class="form-label">Nama Pelanggan</label>
+            <select name="id_pelanggan" id="id_pelanggan" class="form-select" required>
+                <option value="">Pilih Pelanggan</option>
+
+                <% pelanggan.forEach(p => { %>
+                    <option value="<%= p.id_pelanggan %>">
+                        <%= p.nama %>
+                    </option>
+                <% }) %>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Kendaraan</label>
+            <select name="id_kendaraan" id="id_kendaraan" class="form-select" required disabled>
+                <option value="">Pilih pelanggan terlebih dahulu</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Tanggal Servis</label>
+            <input
+                type="date"
+                name="tanggal_servis"
+                class="form-control"
+                required
+            >
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Keluhan Kendaraan</label>
+            <textarea
+                name="keluhan"
+                class="form-control"
+                rows="3"
+                maxlength="500"
+                placeholder="Masukkan keluhan kendaraan"
+            ></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Status Servis</label>
+            <select name="status" class="form-select" required>
+                <option value="Menunggu">Menunggu</option>
+                <option value="Sedang Dikerjakan">Sedang Dikerjakan</option>
+                <option value="Selesai">Selesai</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Total Biaya (Rp)</label>
+            <input
+                type="number"
+                name="total_biaya"
+                class="form-control"
+                min="0"
+                step="1"
+                value="0"
+                required
+            >
+            <small class="text-muted">
+                Masukkan angka tanpa titik. Contoh: 175000
+            </small>
+        </div>
+
+        <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-orange">
+                <i class="bi bi-save"></i> Simpan Servis
+            </button>
+
+            <a href="/servis" class="btn btn-secondary">Batal</a>
+        </div>
+
+    </form>
+</div>
+
+<%- include('../partials/footer') %>

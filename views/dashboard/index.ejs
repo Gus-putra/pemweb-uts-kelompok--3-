@@ -1,0 +1,105 @@
+
+<%- include('../partials/header') %>
+
+<div class="welcome-section">
+    <div>
+        <h3>Selamat Datang di BengkelKu!</h3>
+        <p>Kelola aktivitas bengkel dengan mudah.</p>
+    </div>
+    <a href="/servis/tambah" class="btn btn-orange">
+        <i class="bi bi-plus-lg"></i> Tambah Servis
+    </a>
+</div>
+
+<div class="row g-3 mb-4">
+    <div class="col-md-4 col-lg">
+        <div class="stat-card">
+            <div class="stat-icon orange"><i class="bi bi-people"></i></div>
+            <p>Total Pelanggan</p>
+            <h3><%= stats.pelanggan %></h3>
+        </div>
+    </div>
+
+    <div class="col-md-4 col-lg">
+        <div class="stat-card">
+            <div class="stat-icon blue"><i class="bi bi-car-front"></i></div>
+            <p>Total Kendaraan</p>
+            <h3><%= stats.kendaraan %></h3>
+        </div>
+    </div>
+
+    <div class="col-md-4 col-lg">
+        <div class="stat-card">
+            <div class="stat-icon green"><i class="bi bi-clipboard-check"></i></div>
+            <p>Total Servis</p>
+            <h3><%= stats.servis %></h3>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-lg">
+        <div class="stat-card">
+            <div class="stat-icon yellow"><i class="bi bi-gear"></i></div>
+            <p>Sedang Dikerjakan</p>
+            <h3><%= stats.sedang_dikerjakan %></h3>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-lg">
+        <div class="stat-card">
+            <div class="stat-icon green"><i class="bi bi-check-circle"></i></div>
+            <p>Servis Selesai</p>
+            <h3><%= stats.selesai %></h3>
+        </div>
+    </div>
+</div>
+
+<div class="content-card">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h5>Servis Terbaru</h5>
+        <a href="/servis" class="text-decoration-none">Lihat Semua</a>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Pelanggan</th>
+                    <th>Kendaraan</th>
+                    <th>Tanggal</th>
+                    <th>Status</th>
+                    <th>Biaya</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <% if (terbaru.length === 0) { %>
+                    <tr>
+                        <td colspan="5" class="text-center text-muted py-4">
+                            Belum ada data servis.
+                        </td>
+                    </tr>
+                <% } else { %>
+                    <% terbaru.forEach(item => { %>
+                        <tr>
+                            <td><%= item.nama_pelanggan %></td>
+                            <td><%= item.merek %> - <%= item.nomor_polisi %></td>
+                            <td><%= new Date(item.tanggal_servis).toLocaleDateString('id-ID') %></td>
+                            <td>
+                                <span class="status-badge <%= 
+                                    item.status === 'Menunggu' ? 'waiting' :
+                                    item.status === 'Sedang Dikerjakan' ? 'processing' :
+                                    'completed'
+                                %>">
+                                    <%= item.status %>
+                                </span>
+                            </td>
+                            <td>Rp <%= Number(item.total_biaya).toLocaleString('id-ID') %></td>
+                        </tr>
+                    <% }) %>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<%- include('../partials/footer') %>
